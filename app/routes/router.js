@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const port = process.env.PORT || 3000
+const port = process.env.port || 3000
 
 router.use(express.static('public'))
 
@@ -10,13 +10,15 @@ router.get('/api', (req, res)=> {
         'Heroes': `http://localhost:${port}/api/hero`,
         'Franchises': `http://localhost:${port}/api/franchise`,
         'Powers': `http://localhost:${port}/api/power`,
-        'Species': `http://locahost:${port}/api/species`,
+        'Species': `http://localhost:${port}/api/species`,
         'Teams': `http://localhost:${port}/api/team`
     })
 })
 
 const endpoints = [
-    'hero'
+    'hero',
+    'power',
+    'species'
 ]
 
 endpoints.forEach(endpoint => {
