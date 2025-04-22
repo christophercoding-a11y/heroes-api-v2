@@ -51,4 +51,22 @@ router.get('/heroes', (req, res)=> {
     })
 })
 
+router.get('/heroes/:id', (req, res)=> {
+
+    const id = req.params.id
+
+    const url = `http://localhost:${port}/api/hero/${id}`
+
+    axios.get(url)
+        .then(resp => {
+            let heroName = resp.data.hero_Name == null ? `${resp.data.first_name} ${resp.data.last_name}` : resp.data.hero_name
+
+            res.render('pages/heroSingle', {
+                title: heroName,
+                name: heroName,
+                data: resp.data
+            })
+        })
+})
+
 module.exports = router 
