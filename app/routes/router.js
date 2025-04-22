@@ -27,4 +27,12 @@ endpoints.forEach(endpoint => {
     router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
 })
 
+// home page
+router.get('/', (req, res)=> {
+    res.render('pages/home', {
+        title: 'Home',
+        name: 'My Hero Website'
+    })
+})
+
 module.exports = router 
