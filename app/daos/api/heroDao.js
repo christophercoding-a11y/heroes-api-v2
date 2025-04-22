@@ -5,13 +5,13 @@ const heroDao = {
 
     findHeroes: (res, table)=> {
         con.execute(
-            `SELECT ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
+            `select ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
             ${table}.last_name, ${table}.alias, f.franchise, s.species, 
             ${table}.place_of_origin, ${table}.first_app, ${table}.alignment, ${table}.img_url
-            FROM ${table}
-            JOIN franchise f USING (franchise_id)
-            JOIN species s USING (species_id)
-            ORDER BY ${table}.hero_id;`,
+            from ${table}
+            join franchise f using (franchise_id)
+            join species s using (species_id)
+            order by ${table}.hero_id;`,
             (error, rows)=> {
                 if (!error) {
                     if (rows.length === 1) {
@@ -31,18 +31,18 @@ const heroDao = {
         let rivals = []
 
         con.execute(
-            `SELECT h.hero_id, p.power
-            FROM hero h
-            JOIN hero_to_power hp ON h.hero_id = hp.hero_id
-            JOIN power p ON p.power_id = hp.power_id
-            WHERE h.hero_id = ${id};`,
+            `select h.hero_id, p.power
+            from hero h
+            join hero_to_power hp on h.hero_id = hp.hero_id
+            join power p on p.power_id = hp.power_id
+            where h.hero_id = ${id};`,
             (error, rows)=> {
                 if (!error) {
                     Object.values(rows).forEach(obj => {
                         powers.push(obj.power)
                     })
                     con.execute(
-                        `SELECT h1.hero_name hero, 
+                        `select h1.hero_name hero, 
                         case when h1.hero_name is null then concat(h1.first_name, ' ', h1.last_name)
                         else h1.hero_name
                         end hero,
@@ -50,9 +50,9 @@ const heroDao = {
                         else h2.hero_name
                         end rival
                         FROM hero_to_rival hr 
-                        JOIN hero h1 ON h1.hero_id = hr.hero_id
-                        JOIN hero h2 ON h2.hero_id = hr.rival_id
-                        WHERE h1.hero_id = ${id};`,
+                        join hero h1 on h1.hero_id = hr.hero_id
+                        join hero h2 on h2.hero_id = hr.rival_id
+                        where h1.hero_id = ${id};`,
                         (error, rows)=> {
                             if (!error) {
                                 Object.values(rows).forEach(obj => {
@@ -60,14 +60,14 @@ const heroDao = {
                                 })
 
                                 con.execute(
-                                    `SELECT h.hero_id, 
+                                    `select h.hero_id, 
                                     h.hero_name, h.first_name,
                                     h.last_name, h.alias, 
                                     f.franchise, s.species, h.place_of_origin, 
                                     h.first_app, h.alignment, h.img_url
-                                    FROM hero h
-                                    JOIN franchise f USING (franchise_id)
-                                    JOIN species s USING (species_id)
+                                    from hero h
+                                    join franchise f using (franchise_id)
+                                    join species s using (species_id)
                                     WHERE h.hero_id = ${id};`,
                                     (error, rows)=> {
                                         rows.forEach(row => {
@@ -98,14 +98,14 @@ const heroDao = {
 
     findByAlignment:(res, table, alignment)=> {
         con.execute(
-            `SELECT ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
+            `select ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
             ${table}.last_name, ${table}.alias, f.franchise, s.species, 
             ${table}.place_of_origin, ${table}.first_app, ${table}.alignment, ${table}.img_url
-            FROM ${table}
-            JOIN franchise f USING (franchise_id)
-            JOIN species s USING (species_id)
+            from ${table}
+            join franchise f using (franchise_id)
+            join species s using (species_id)
             where ${table}.alignment = '${alignment}'
-            ORDER BY ${table}.hero_id;`,
+            order by ${table}.hero_id;`,
             (error, rows)=> {
         
                 if (!error) {
@@ -122,13 +122,13 @@ const heroDao = {
     },
     sort: (res, table)=> {
         con.execute(
-            `SELECT ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
+            `select ${table}.hero_id, ${table}.hero_name, ${table}.first_name,
             ${table}.last_name, ${table}.alias, f.franchise, s.species, 
             ${table}.place_of_origin, ${table}.first_app, ${table}.alignment, ${table}.img_url
-            FROM ${table}
-            JOIN franchise f USING (franchise_id)
-            JOIN species s USING (species_id)
-            ORDER BY ${table}.hero_name, ${table}.last_name, ${table}.first_name;`,
+            from ${table}
+            join franchise f using (franchise_id)
+            join species s using (species_id)
+            order by ${table}.hero_name, ${table}.last_name, ${table}.first_name;`,
             (error, rows)=> {
                 if (!error) {
                     if (rows.length === 1) {

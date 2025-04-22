@@ -1,29 +1,28 @@
 const con = require('../../config/dbconfig')
 
-const powerDao = {
-    table: 'power',
+const franchiseDao = {
 
-    findHeroesByPower: (res, table, power) => {
+    table: 'franchise',
+
+    findHeroesByFranchise: (res, table, franchise)=> {
         con.execute(
             `select h.hero_id, h.hero_name, h.first_name,
             h.last_name, h.alias, f.franchise, s.species, 
-            h.place_of_origin, h.first_app, h.alignment, h.img_url,
-            FROM hero h
+            h.place_of_origin, h.first_app, h.alignment, h.img_url
+            from hero h
             join franchise f using (franchise_id)
             join species s using (species_id)
-            join hero_to_power hp on h.hero_id = hp.hero_id
-            join power p on hp.power_id = p.power_id
-            where p.power = '${power}'
-            ORDER BY h.hero_id;`,
+            where s.franchise = '${franchise}'
+            order by h.hero_id;`,
             (error, rows)=> {
                 if (!error) {
                     res.json(rows)
                 } else {
-                    console.log(`Dao Error: ${table}`, error)
+                    console.log(`DAO Error: ${table}`, error)
                 }
             }
         )
     }
 }
 
-module.exports = powerDao
+module.exports = franchiseDao
