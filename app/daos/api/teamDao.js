@@ -1,15 +1,14 @@
 const con = require('../../config/dbconfig')
-const { findHeroesByFranchise } = require('./franchiseDao')
-const { table } = require('./speciesDao')
+
 
 const teamDao = {
     table: 'team',
 
     findHeroesByTeam: (res, table, team)=> {
         con.execute(
-            `select h.hero_id, h_hero_name, h.first_name,
-            h.last_name, h.alias, f.franchise, s.species,'
-            h.place_of_origin, h.first-app, h.alignment, h.img_url
+            `select h.hero_id, h.hero_name, h.first_name,
+            h.last_name, h.alias, f.franchise, s.species,
+            h.place_of_origin, h.first_app, h.alignment, h.img_url
             from hero h
             join franchise f using (franchise_id)
             join species s using (species_id)
@@ -31,5 +30,8 @@ const teamDao = {
         )
     }
 }
+
+// select h.hero_id, h_hero_name, h.first_name,
+// h.last_name, h.alias, f.franchise, s.species,'
 
 module.exports = teamDao

@@ -12,7 +12,7 @@ const franchiseDao = {
             from hero h
             join franchise f using (franchise_id)
             join species s using (species_id)
-            where s.franchise = '${franchise}'
+            where f.franchise = '${franchise}'
             order by h.hero_id;`,
             (error, rows)=> {
                 if (!error) {

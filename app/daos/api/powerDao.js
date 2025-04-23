@@ -7,7 +7,7 @@ const powerDao = {
         con.execute(
             `select h.hero_id, h.hero_name, h.first_name,
             h.last_name, h.alias, f.franchise, s.species, 
-            h.place_of_origin, h.first_app, h.alignment, h.img_url,
+            h.place_of_origin, h.first_app, h.alignment, h.img_url
             FROM hero h
             join franchise f using (franchise_id)
             join species s using (species_id)
