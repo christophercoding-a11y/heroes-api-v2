@@ -1,18 +1,18 @@
 <%- include('../partials/header') %>
 
-<main class="main" id="allSpeciesMain">
+<main class="main" id="allDataMain">
     <div class="container">
         <div class="row row-cols-2 row cols-md-4">
             <% data.forEach(item => { %>
                 <div class="col">
-                    <div class="card h-100 species-card">
+                    <div class="card h-100 data-card">
                         <div class="card-body">
                             <h2 class="card-title">
-                                <%= item.species %>
+                                <%= item[category] %>
                             </h2>
                         </div>
                         <footer class="card-footer">
-                            <p class="card-footer-text">Click <a href="/species/<%= item.species %>" class="card-footer-link">here </a>to see heroes of this species!</p>
+                            <p class="card-footer-text">Click <a href="/<%= category %>/<%= item[category] %>" class="card-footer-link">here </a>to see heroes with these powers</p>
                         </footer>
                     </div>
                 </div>
