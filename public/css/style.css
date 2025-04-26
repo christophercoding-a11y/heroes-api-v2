@@ -4,4 +4,53 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #ffe600;
+    font-family: 'Bangers', cursive;
 }
+
+.header {
+    padding: 20px 0;
+    margin-bottom: 10px;
+    background-color: #000000;
+}
+
+.footer {
+    padding: 20px 0;
+    background-color: #000000;
+}
+
+
+.hero-figure {
+    border: 5px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 5px 5px 0 #000;
+}
+
+.hero-figure img {
+    height: 300px;
+}
+
+
+.hero-single-figure img {
+    height: 500px;
+}
+
+.figure-caption {
+    padding: 5px;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .hero-figure img {
+    height: 220px;
+    }
+}
+
+
+
