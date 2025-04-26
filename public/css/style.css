@@ -8,15 +8,31 @@ body {
     font-family: 'Bangers', cursive;
 }
 
+
 .header {
     padding: 20px 0;
     margin-bottom: 10px;
     background-color: #000000;
 }
 
+.header-text {
+    color: #fff;
+}
+
+.nav-text {
+    color: #fff;
+}
+
+
+
 .footer {
     padding: 20px 0;
     background-color: #000000;
+}
+
+.footer-text {
+    color: #fff;
+    font-size: large;
 }
 
 
@@ -27,8 +43,14 @@ body {
     box-shadow: 5px 5px 0 #000;
 }
 
+
+.hero-figure:hover {
+    transform: scale(1.05); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .hero-figure img {
-    height: 300px;
+    height: 280px;
 }
 
 

@@ -12,15 +12,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <h1 class="display-3 text-captialize text-center text-md-start text-light">
+                    <h1 class="display-5 header-text text-captialize text-center text-md-start">
                         <%= name %>
                     </h1>
                 </div>
                 <div class="col-md-7">
-                    <nav class="nav top-nav justify-content-center justify content-md-end" id="topNav">
-                        <a href="/" class="nav-link top-nav-link text-uppercase">Home</a>
+                    <nav class="nav  top-nav justify-content-center justify content-md-end" id="topNav">
+                        <a href="/" class="nav-link nav-text top-nav-link text-uppercase">Home</a>
                         <% endpoints.forEach(endpoint => { %>
-                            <a href="/<%= endpoint %>" class="nav-link top-nav-link text-uppercase"><%= endpoint %></a>
+                            <a href="/<%= endpoint %>" class="nav-link top-nav-link nav-text text-uppercase"><%= endpoint %></a>
                         <% }) %>
                     </nav>
                 </div>
