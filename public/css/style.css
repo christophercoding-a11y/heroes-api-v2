@@ -8,6 +8,12 @@ body {
     font-family: 'Bangers', cursive;
 }
 
+.home-figure {
+    margin: 10px auto;
+    padding: 10px;
+    width: 100%;
+}
+
 
 .header {
     padding: 20px 0;
@@ -43,6 +49,10 @@ body {
     box-shadow: 5px 5px 0 #000;
 }
 
+.home-figure img {
+    height: 450px;
+}
+
 
 .hero-figure:hover {
     transform: scale(1.05); 
@@ -64,6 +74,15 @@ body {
     color: #333;
     font-weight: 500;
 }
+
+.message-caption {
+    color: #000;
+    font-size: larger;
+}
+
+
+
+
 
 #allDataMain {
     padding-bottom: 20px;

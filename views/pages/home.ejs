@@ -1,9 +1,16 @@
-<%- include ('../partials/header') %>
+<%- include('../partials/header') %>
 
-<main class="main" id="homeMain">
-    <div class="container">
-        <h2 class="text-center text-md-start">Welcome to my Home Page!</h2>
-    </div>
-</main>
+    <main class="main" id="homeMain">
+        <div class="container">
+            <h2 class="home-heading text-center text-dark"><%= heroName %></h2>
+            <figure class="figure home-figure">
+                <img src="/images/<%= randomHero.img_url %>"alt="image of <%= heroName %>" class="img-fluid image home-img d-block mx-auto figure-img home-img" />
+                <figcaption class=" figure-caption message-caption text-center">
+                    <%= message %>
+                </figcaption>
+            </figure>
+            
+        </div>
+    </main>
 
-<%- include ('../partials/footer') %>
+<%- include('../partials/footer') %>
