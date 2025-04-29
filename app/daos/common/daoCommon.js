@@ -23,7 +23,7 @@ const daoCommon = {
 
     findById: (res, table, id)=> {
         con.execute(
-            `select * from ${table}, where ${table}_id = ?;`,
+            `select * from ${table} where ${table}_id = ?;`,
             [id],
             (error, rows)=> {
                 if (!error) {
