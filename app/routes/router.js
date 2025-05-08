@@ -79,6 +79,15 @@ router.get('/', (req, res)=> {
 
 })
 
+// heroForm
+router.get('/heroForm', (req, res)=> {
+    res.render('pages/heroForm', {
+        title: 'Hero Form',
+        name: 'Add a hero',
+        endpoints,
+    })
+})
+
 for (let i = 0; i < endpoints.length; i++) {
     const endpoint = endpoints[i]
     if (endpoint == 'hero') {
@@ -149,6 +158,15 @@ for (let i = 0; i < endpoints.length; i++) {
                 })
         })
     }
+
+    // router.all('/{*any}', (req, res)=> {
+    //     // res.send('<h1>404 Error. This Page does not exists.</h1>')
+    //     res.render('404 Error', {
+    //         title: '404 Error',
+    //         name: '404 Error',
+    //         endpoints
+    //     })
+    // })
 }
 
 
