@@ -32,4 +32,15 @@ router.post('/post', (req, res)=> {
     dao.create(req, res, dao.table)
 })
 
+
+router.post('/power-post/:id', (req, res)=> {
+    dao.addPowers(req, res, req.params.id)
+})
+
+router.post('/hero-rival/:id', (req, res)=> {
+    dao.addRivals(req, res, req.params.id)
+})
+
+
+
 module.exports = router

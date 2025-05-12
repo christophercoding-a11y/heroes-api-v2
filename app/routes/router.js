@@ -88,6 +88,37 @@ router.get('/heroForm', (req, res)=> {
     })
 })
 
+// powerForm
+router.get('/powerForm/:heroId',(req, res)=> {
+    const heroId = req.params.heroId
+    axios.get(`http://localhost:${port}/api/power`)
+        .then(resp => {
+            res.render('pages/powerForm', {
+                title: 'Power Form',
+                name: 'Add Powers',
+                endpoints,
+                heroId,
+                powers: resp.data
+            })
+        })
+})
+
+// rivalForm
+router.get('/rivalForm/:heroId',(req, res)=> {
+    const heroId = req.params.heroId
+    axios.get(`http://localhost:${port}/api/hero/sort`)
+        .then(resp => {
+            res.render('pages/rivalForm', {
+                title: 'Rival Form',
+                name: 'Add Rivals',
+                endpoints,
+                heroId,
+                rivals: resp.data
+            })
+        })
+})
+
+
 for (let i = 0; i < endpoints.length; i++) {
     const endpoint = endpoints[i]
     if (endpoint == 'hero') {

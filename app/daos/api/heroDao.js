@@ -141,6 +141,38 @@ const heroDao = {
                 }
             }
         )
+    },
+    addPowers: (req, res, id)=> {
+    
+
+        const data = req.body.power_id.map(item => {
+            return { "hero_id" : id, "power_id": item}
+        })
+
+        data.forEach(obj => {
+
+            con.execute(
+                `insert into hero_to_power (hero_id, power_id)
+                values (${obj.hero_id}, ${obj.power_id});`,
+                (error, dbres)=> {
+                    if (error) {
+                        res.send(error)
+                    }
+                }
+            )
+        })
+
+        res.send('<h1>Posted</h1>')
+    },
+    addRivals: (req, res, id) => {
+
+        const data = req.body.rival_id.map(item => {
+            return { "hero_id" : id, "rival_id": item}
+        })
+
+        data.forEach(obj => {
+            con.execute()
+        })
     }
 }
 
