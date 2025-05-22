@@ -41,6 +41,8 @@ router.post('/hero-rival/:id', (req, res)=> {
     dao.addRivals(req, res, req.params.id)
 })
 
-
+router.post('/image-update/:id', (req, res)=> {
+    dao.update(req, res, dao.table)
+})
 
 module.exports = router

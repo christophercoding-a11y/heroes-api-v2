@@ -5,7 +5,10 @@
         <div class="row">
             <div class="col-5 col-md-7">
                 <figure class="figure hero-single-figure text-center">
-                    <img src="/images/<%= data.img_url %>" alt="placeholder img" class="img-fluid image w-100 figure-img" />
+                    <img src="/images/<%= data.img_url %>" alt="image of <%= name %>" class="img-fluid image w-100 figure-img" />
+                    <figcaption class="figure-caption text-uppercase">
+                        <%= name %> | No image? Add one <a href="/hero-add-image"><%= data.hero_id %>Here</a>
+                    </figcaption>
                     <%= name %>
                 </figure>
             </div>

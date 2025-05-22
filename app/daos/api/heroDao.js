@@ -1,4 +1,7 @@
+const fs = require('fs')
+const path = require('path')
 const con = require('../../config/dbconfig')
+const { dir } = require('console')
 
 const heroDao = {
     table: 'hero',
@@ -171,8 +174,60 @@ const heroDao = {
         })
 
         data.forEach(obj => {
-            con.execute()
+            con.execute(
+                `insert into hero_to_rival (hero_id, rival_id) values (${obj.hero_id}, ${obj.rival_id});`,
+                (error, dbres) => {
+                    if (error) {
+                        res.send(error)
+                    }
+                }
+            )
         })
+
+        res.send('<h1>Rivals Posted</h1>')
+    },
+    update: (req, res, table) => {
+        if (isNaN(req.params.id)) {
+            res.json({
+                "error": true,
+                "message": "Id must be a number"
+            })
+        } else if (Object.keys(req.body).length === 0) {
+            res.json({
+                "error": true,
+                "message": "No fields to update"
+            })
+        } else {
+            console.log(req.body)
+
+            const fields = Object.keys(req.body)
+            const values = Object.values(req.body)
+
+            con.execute(
+                `UPDATE ${table}
+                set ${fields.join(' = ?,')} = ? where ${table}_id = ?;`,
+                [...values, req.params.id],
+                (error, dbres)=> {
+                    if (!error) {
+                        res.send(`Changed ${dbres.changedRows} row(s)`)
+                    } else {
+                        console.log(`${table}Dao error:`, error)
+                        res.send('Error creating record')
+                    }
+                }
+            )
+
+            const addFile =(dirPath, filename,)=> {
+                const filePath = path.join(dirPath, fileName)
+
+                if (!fs.existsSync(dirPath)) {
+                    fs.mkdirSync(dirPath, { recursive: true})
+                }
+
+                fs.writeFileSync(filePath)
+                console.log(`File`)
+            }
+        }
     }
 }
 

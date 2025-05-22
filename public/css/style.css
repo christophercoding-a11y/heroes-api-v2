@@ -64,17 +64,6 @@ body {
 }
 
 
-.rival-figure {
-    border: 5px solid #000;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 5px 5px 0 #000;
-}
-
-.rival-figure img {
-    height: 280px;
-}
-
 
 .hero-single-figure img {
     height: 325px;

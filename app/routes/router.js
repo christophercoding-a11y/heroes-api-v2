@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 
-const port = process.env.port || 3000
+const port = process.env.port || 3005
 
 router.use(express.static('public'))
 
@@ -116,6 +116,21 @@ router.get('/rivalForm/:heroId',(req, res)=> {
                 rivals: resp.data
             })
         })
+})
+
+// imageForm
+router.get('/hero-add-image/:hero/:heroId', (req, res)=> {
+
+    const hero = req.params.hero
+    const heroId = req.params.heroId
+
+    res.render('pages/imageForm', {
+        title: 'Image Form',
+        name: 'Add Image',
+        hero,
+        heroId,
+        endpoints
+    })
 })
 
 

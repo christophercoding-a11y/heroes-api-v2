@@ -2,12 +2,13 @@
 
 <main class="main" id="rivalFormMain">
     <div class="container">
-        <form action="http://localhost:3000/api/hero-rival">
+        <form action="http://localhost:3000/api/hero-rival-post/<% heroId %>" class="form" id="rivalForm">
             <div class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-4">
                 <% rivals.forEach(rival => { %>
                     <div class="col">
                         <figure class="figure rival-figure">
-                            <img src="/images/<%= rival.img_url %>" alt="A picture of a hero"  class="img-fluid rival-image">
+                            <img src="https://placehold.co/200x250"alt="image of <%= name %>"class="img-fluid image" />
+                            
                             <figcaption class="figcaption">
                                 <div class="form-check">
                                     <input 
@@ -16,7 +17,7 @@
                                     id="rival<%= rival.rival_id%>" 
                                     class="form-check-label" 
                                     name="rival_id[]">
-                                    <label for="rival <%=rival.rival_id %>">
+                                    <label for="rival <%=rival.hero_id %>" class="form-check-label text-uppercase">
                                         <%= rival.rival %>
                                     </label>
                                 </div>

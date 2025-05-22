@@ -3,7 +3,7 @@ const server = express()
 const router = require('./app/routes/router')
 const helmet = require('helmet')
 const cors = require('cors')
-const port = process.env.port || 3000
+const port = process.env.port || 3005
 
 // Handle security
 server.use(helmet.contentSecurityPolicy({
